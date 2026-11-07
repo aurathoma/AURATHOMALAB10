@@ -1,5 +1,5 @@
 Package: AURATHOMALAB11
-Title: Maximum Likelihood Estimation, Newton-Raphson Optimization, and Bootstrap Intervals
+Title: Tests of Hypotheses and Boostrap Methods
 Version: 0.1.0
 Authors@R: c(
     person(
@@ -8,10 +8,8 @@ Authors@R: c(
       role = c("aut", "cre")
     )
   )
-Description: Provides custom statistical computing functions for maximum likelihood 
-    estimation (MLE) via grid search, root-finding using the Newton-Raphson algorithm 
-    with numerical derivatives, and bootstrap resampling confidence intervals. Also 
-    includes an interactive Shiny application for exploring bootstrap distributions.
+Description: Provides custom statistical computing functions for Highest Density Intervals (HDI), Equal-Tailed Intervals (ETI), maximum likelihood estimation (MLE) via grid search, root-finding algorithms, and bootstrap resampling confidence intervals. 
+  Also includes an interactive Shiny application for exploring bootstrap distributions. 
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
