@@ -1,0 +1,62 @@
+---
+title: "AURATHOMLAB11"
+author: "Aura Thoma"
+date: "`r Sys.Date()`"
+output:
+  html_document:
+    toc: yes
+    toc_float: yes
+    number_sections: yes
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Task 1 {-}
+
+
+a. $$T = \frac{\bar{Y} - \mu}{s/\sqrt{n}} \sim t_{n-1}$$
+$$P\left( -t_{\alpha_2, n-1} < \frac{\bar{Y} - \mu}{s/\sqrt{n}} < t_{\alpha_1, n-1} \right) = 1 - \alpha$$
+$$P\left( -t_{\alpha_2} \frac{s}{\sqrt{n}} < \bar{Y} - \mu < t_{\alpha_1} \frac{s}{\sqrt{n}} \right) = 1 - \alpha$$
+$$P\left( -\bar{Y} - t_{\alpha_2} \frac{s}{\sqrt{n}} < -\mu < -\bar{Y} + t_{\alpha_1} \frac{s}{\sqrt{n}} \right) = 1 - \alpha$$
+$$P\left( \bar{Y} - t_{\alpha_1} \frac{s}{\sqrt{n}} < \mu < \bar{Y} + t_{\alpha_2} \frac{s}{\sqrt{n}} \right) = 1 - \alpha$$
+b. Create a custom tail where significance levels are derived from inputs alpha alpha2. Create histogram plot. Return hypothesis test with non symmetric confidence interval. 
+```{r}
+# Uses default alpha, alpha2, mu0, epsilon, and bins
+ciNonSym(x = df$LENGTH)
+```
+
+# Task 3 {-}
+
+
+```{r}
+# Example 1: Calculate HDI for a Normal distribution (default arguments)
+norm_res <- hdicalc(stem = "norm", args = list(mean = 10, sd = 5), alpha = 0.05)
+print(norm_res)
+
+# Example 2: Calculate HDI for a Gamma distribution
+gamma_res <- hdicalc(stem = "gamma", args = list(shape = 3, rate = 1), alpha = 0.05)
+print(gamma_res)
+```
+
+The output of hdicalc function is the set alpha level. Alpha 1 is the probability of being assigned to the lower tail. Alpha 2 is the probability of being assigned to the upper tail. 
+HDI or highest density interval spans the values that contain 95% credibility while ensuring every point has a higher density than any outside point. RHDI is the range of the HDI points which is an interval. ETI or equal tailed interval refers to an equal amount of probability om each tail. RETI is the interval where all the points lie. 
+```{r}
+# Call hdicalc with stem = "beta" and parameter list shape1 = 3, shape2 = 10
+beta_hdi_res <- hdicalc(stem = "beta", args = list(shape1 = 3, shape2 = 10), alpha = 0.05)
+print(beta_hdi_res)
+```
+
+C ++
+```{r}
+Rcpp::sourceCpp("src/hdicalc.cpp")
+#Call the C++ function directly from R
+hdicalc_cpp(stem = "norm", args = list(mean = 10, sd = 5), alpha = 0.05)
+
+# Or call it for a Beta distribution
+hdicalc_cpp(stem = "beta", args = list(shape1 = 3, shape2 = 10), alpha = 0.05)
+```
+
+
+
